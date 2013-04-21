@@ -9,9 +9,6 @@ Bowser-cli is a command line interface made to simplify the creation of games ba
 
 ```
 npm install -g bowser-cli
-npm install -g browserify
-npm install -g nodemon
-npm install -g doxx
 ```
 
 Now you have installed all you need you will want to use the bowser-cli to create a game, this is very easy.
