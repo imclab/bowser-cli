@@ -1,40 +1,23 @@
 # BOWSER-CLI
-============
 
 ### Enquiring
 
-Bowser-cli is a command line interface made to simplify the creation of games based on [bowser-engine](https://github.com/bowserjs/bowser-engine). You will need to install node.js before anything else. This can be achieved using your [favorite](http://www.macports.org/) package manager or, alternatively, through [nodejs.org](http://nodejs.org). Once you have node installed, just issue the following commands from the terminal.
+Bowser-cli is a command line interface made to simplify the creation of games based on [bowser-engine](https://github.com/bowserjs/bowser-engine).
 
-### Installing
+Bowser-cli is a node package meant to be installed and used globally. To have a good idea of how it should be used pleased refere to this [article](http://bowserjs.org/learn/get-started).
 
-```
-npm install -g bowser-cli
-```
+### Collaborate
 
-Now you have installed all you need you will want to use the bowser-cli to create a game, this is very easy.
+We are very kean to have people contributing to the project, whether it is by pointing at issues, sharing ideas, issuing pull requests or ultimatly becoming official members. That being said, good collaboration does not go well without clear guidelines and organisation. This is why we will take advantage of this readme to outline some of that stuff.
 
-### Creating
+* Indentation is made out of four spaces.
+* Code is formated matching [JSLint](http://www.jslint.com/) standards.
+* In line documentation follows JSDoc markup.
+* Comments are one liners starting with a capital and ending with a dot.
+* Git commits are one liners starting with a capital and ending without ponctuation.
+* A base class becomes folder. Sub-classes live in that folder.
+* We host a single class per source file.
+* Source files export the class itself.
+* When a package is required it is declared uppercase.
 
-```
-bowser create <gamename>
-```
-
-This will create a folder "gamename" in your current terminal working directory.
-Only a single step left before all the fun.
-
-### Launching
-
-```
-npm start
-```
-
-Make sure to be inside the "gamename" folder when you run this. It will start the game server and by default will server at the following [address](http://localhost:8000). You are now ready to develop your game.
-
-### Developing
-
-All you code will be living in the "src" folder and all you assets will be served statically from the "assets" folder. The only mandatory thing is to have a index.js file in the "src" folder that exports an instance of your game. The rest of the organisation is up to you.
-
-### Deploying
-
-Ultimately the game is just a little node http server, therefore you can deploy your game pretty much however you like. In the future we might provide a terminal one liner allowing you to upload your game on our servers against a few dineros.
-
+It goes without saying that all guidelines are up for discussions. If something can be done in a way that is substantialy better, there is no reason to keep doing it.
