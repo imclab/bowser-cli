@@ -14,7 +14,7 @@
         "colors": "0.6.0-1"
 	},
     "config": {
-        "port": 8000
+        "port": {{port}}
     },
     "scripts": {
         "start": "nodemon"

@@ -1,11 +1,30 @@
 {
   "name": "bowser-cli",
   "version": "0.0.0",
+  "description": "A command line interface to create bowser-engine based games with ease.",
+  "main": "index.js",
   "dependencies": {
     "handlebars":"1.0.10",
     "colors": "0.6.0-1",
     "npm": "1.2.25"
   },
+  "bin": {
+    "bowser": "index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bowserjs/bowser-engine.git"
+  },
+  "keywords": [
+    "game",
+    "webgl",
+    "pixel",
+    "three",
+    "engine",
+    "3d",
+    "2d"
+  ],
   "author": "Bowser.js",
+  "homepage": "http://www.bowserjs.org",
   "license": "BSD"
 }

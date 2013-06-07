@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 // Imports.
 var HANDLEBARS = require('handlebars');
 var READLINE = require('readline');
@@ -6,17 +8,11 @@ var PATH = require('path');
 var NPM = require('npm');
 var FS = require('fs');
 
-// Creating the config object.
-var config = {
-    author: 'John Doe',
-    title: 'game',
-    description: 'Another game.',
-    license: 'GPL',
-    port: 8000,
-    separate: true,
-    config: null,
-    debug: 0
-};
+var usage = '\nUsage:\n'.cyan;
+usage += '    bowser [options] <command>';
+usage += '\n\nCommands:\n'.cyan;
+usage += '    create <game>';
+usage += '\n';
 
 // Declaring log level.
 var LOG_LOW = 1;
@@ -105,59 +101,74 @@ function Template(file, nicename) {
         }
     };
     return this;
-}
-
-var readline = READLINE.createInterface({
-    input: process.stdin,
-    output: process.stdout
-});
-
-readline.question(("Title (" + config.title + "): ").cyan, function(answer) {
-
-    if (answer) {
-        config.title = answer.toLowerCase();
     }
 
-    readline.question(("Author (" + config.author + "): ").cyan, function(answer) {
+if (process.argv[2] === 'create') {
+    if (!process.argv[3]) {
+        console.log('\nProvide a name for the game you want to create.\n'.cyan);
+        process.exit(1);
+    }
+
+    // Creating the config object.
+    var config = {
+        author: 'John Doe',
+        title: process.argv[3],
+        description: '',
+        license: 'GPL',
+        port: 8000,
+        separate: true,
+        config: null,
+        debug: 0
+    };
+
+    var readline = READLINE.createInterface({
+        input: process.stdin,
+        output: process.stdout
+    });
+
+    console.log('');
+
+    readline.question(("Author (" + config.author + "): "), function(answer) {
 
         if (answer) {
             config.author = answer;
         }
 
-        readline.question(("Description (" + config.description + "): ").cyan, function(answer) {
+        readline.question(("Description: "), function(answer) {
 
             if (answer) {
                 config.description = answer;
             }
 
-            readline.question(("License (" + config.license + "): ").cyan, function(answer) {
+            readline.question(("License (" + config.license + "): "), function(answer) {
 
                 if (answer) {
                     config.license = answer;
                 }
 
-                readline.question(("Port (" + config.port + "): ").cyan, function(answer) {
+                readline.question(("Port (" + config.port + "): "), function(answer) {
 
-                    if (answer) {
-                        config.port = answer;
-
+                    if (parseInt(answer, 10)) {
+                        config.port = parseInt(answer, 10);
                     }
 
-                    readline.question("Happy (Yes)? ".cyan, function(answer) {
+                    readline.question("Happy (Yes): ", function(answer) {
 
                         log("'" + answer + "'", LOG_HIGH);
 
-                        if (answer.toLowerCase() === 'yes') {
+                        if (answer.toLowerCase() === 'yes' || answer === '') {
 
                             // Go through and render the templates.
-                            var template = new Template('template');
+                            console.log('\n');
+                            var template = new Template(PATH.join(__dirname, 'template'));
                             template.write(config.title, config);
                             process.chdir(config.title);
                             NPM.load(function() {
-                                NPM.install();
+                                NPM.install(function(){
+                                    console.log('\nIssue '.cyan + 'cd ' + config.title + ' followed by '.cyan + 'npm start' + '.\n'.cyan);
+                                });
                                 readline.close();
                             });
-
                         } else {
                             console.log('');
                             process.exit(1);
@@ -168,4 +179,8 @@ readline.question(("Title (" + config.title + "): ").cyan, function(answer) {
             });
         });
     });
-});
+
+} else {
+    console.log(usage);
+    process.exit(1);
+}
