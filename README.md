@@ -2,9 +2,7 @@
 
 ### Enquiring
 
-Bowser-cli is a command line interface made to simplify the creation of games based on [bowser-engine](https://github.com/bowserjs/bowser-engine).
-
-Bowser-cli is a node package meant to be installed and used globally. To have a good idea of how it should be used pleased refere to this [article](http://bowserjs.org/learn/get-started).
+Bowser-cli is a command line interface made to simplify the creation of games based on [bowser-engine](https://github.com/bowserjs/bowser-engine). Bowser-cli is a node package meant to be installed and used globally. To have a good idea of how it should be used please refere to this [article](http://bowserjs.org/learn/getting-started).
 
 ### Collaborate
 
