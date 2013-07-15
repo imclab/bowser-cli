@@ -10,14 +10,13 @@
 		"express": "3.2.0",
 		"handlebars": "1.0.10",
         "browserify": "2.8.1",
-        "nodemon": "0.7.6",
         "colors": "0.6.0-1"
 	},
     "config": {
-        "port": {{port}}
+        "port": "{{port}}"
     },
     "scripts": {
-        "start": "nodemon"
+        "start": "node index.js"
     },
     "repository": {},
     "author": "{{author}}",
